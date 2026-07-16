@@ -216,21 +216,21 @@ void new_report_fun(void *report, MODE mode_host, void *new_report, MODE mode_de
         case PSX: {
                 uint32_t * psx_data = report;
                 /*COPY DATA BUTTONS [3] AND [4]*/
-                host_report.wButtons = (DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_DPAD_UP ? 0 : XINPUT_GAMEPAD_DPAD_UP) |
+                host_report.wButtons = (DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_DPAD_UP ? 0 : XINPUT_GAMEPAD_Y) |
                                        ((DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_DPAD_RIGHT ? 0
-                                                                                          : XINPUT_GAMEPAD_DPAD_RIGHT)) |
-                                       (DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_DPAD_DOWN ? 0 : XINPUT_GAMEPAD_DPAD_DOWN) |
-                                       (DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_DPAD_LEFT ? 0 : XINPUT_GAMEPAD_DPAD_LEFT) |
+                                                                                          : XINPUT_GAMEPAD_B)) |
+                                       (DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_DPAD_DOWN ? 0 : XINPUT_GAMEPAD_A) |
+                                       (DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_DPAD_LEFT ? 0 : XINPUT_GAMEPAD_X) |
                                        (DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_START ? 0 : XINPUT_GAMEPAD_START) |
                                        (DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_SELECT ? 0 : XINPUT_GAMEPAD_BACK) |
                                        (DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_R3 ? 0 : XINPUT_GAMEPAD_RIGHT_THUMB) |
                                        (DATA_SHIFT(psx_data[3]) & PSX_GAMEPAD_L3 ? 0 : XINPUT_GAMEPAD_LEFT_THUMB) |
                                        (DATA_SHIFT(psx_data[4]) & PSX_GAMEPAD_R1 ? 0 : XINPUT_GAMEPAD_RIGHT_SHOULDER) |
                                        (DATA_SHIFT(psx_data[4]) & PSX_GAMEPAD_L1 ? 0 : XINPUT_GAMEPAD_LEFT_SHOULDER) |
-                                       (DATA_SHIFT(psx_data[4]) & PSX_GAMEPAD_TRIANGLE ? 0 : XINPUT_GAMEPAD_Y) |
-                                       (DATA_SHIFT(psx_data[4]) & PSX_GAMEPAD_CIRCLE ? 0 : XINPUT_GAMEPAD_B) |
-                                       (DATA_SHIFT(psx_data[4]) & PSX_GAMEPAD_CROSS ? 0 : XINPUT_GAMEPAD_A) |
-                                       (DATA_SHIFT(psx_data[4]) & PSX_GAMEPAD_SQUARE ? 0 : XINPUT_GAMEPAD_X);
+                                       (DATA_SHIFT(psx_data[4]) & PSX_GAMEPAD_TRIANGLE ? 0 : XINPUT_GAMEPAD_DPAD_UP) |
+                                       (DATA_SHIFT(psx_data[4]) & PSX_GAMEPAD_CIRCLE ? 0 : XINPUT_GAMEPAD_DPAD_RIGHT) |
+                                       (DATA_SHIFT(psx_data[4]) & PSX_GAMEPAD_CROSS ? 0 : XINPUT_GAMEPAD_DPAD_DOWN) |
+                                       (DATA_SHIFT(psx_data[4]) & PSX_GAMEPAD_SQUARE ? 0 : XINPUT_GAMEPAD_DPAD_LEFT);
                 /*COPY JOYSTICKS DATA*/
                 /*IS CONTROLLER MODE DIGITAL?*/
                 if (DATA_SHIFT(psx_data[1]) == 0X41) {
